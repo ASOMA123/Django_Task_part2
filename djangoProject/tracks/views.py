@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Track
 # Create your views here.
 def all_tracks(request):
-  tracks=[[1,"Odoo"],[2,"Python"],[3,"Django"]]
+  #{"id":1,"name":"python"}
+  tracks=Track.objects.all()
   return render(request, 'tracks/list.html' , context={'tracks':tracks})
 
 def get_tracks(request):

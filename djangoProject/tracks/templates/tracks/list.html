@@ -13,10 +13,10 @@
     </tr>
     {% for track in tracks  %}
     <tr>
-        <td>{{track.0}}</td>
-        <td>{{track.1}}</td>
-        <td><a href="{% url 'update_track' track.0 %}">Update</a> 
-            <a href="{% url 'delete_track' track.0 %}">Delete</a></td>
+        <td>{{track.id}}</td>
+        <td>{{track.name}}</td>
+        <td><a href="{% url 'update_track' track.id %}">Update</a> 
+            <a href="{% url 'delete_track' track.id %}">Delete</a></td>
     </tr>
     {% endfor %}
  </table>
