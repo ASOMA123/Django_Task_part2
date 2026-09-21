@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+    <h1>Hello world</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero tempore, aperiam optio rem ipsa corrupti consectetur quae labore nulla, eum rerum impedit dolor eius quibusdam doloribus. Voluptatem placeat culpa aspernatur?</p>
+<p><a href="{% url 'insert_track' %}">Insert</a></p>
+ <table>
+    <tr>
+    <th>ID</th>
+     <th>Name</th>
+     
+    </tr>
+    {% for track in tracks  %}
+    <tr>
+        <td>{{track.0}}</td>
+        <td>{{track.1}}</td>
+        <td><a href="{% url 'update_track' track.0 %}">Update</a> 
+            <a href="{% url 'delete_track' track.0 %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+ </table>
+ <!-- <script src="{% static 'js/main.js' %}" ></script> -->
+{% endblock %}
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+</html>
+-->

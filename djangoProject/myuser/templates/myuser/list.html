@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Hello world</h1>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero tempore, aperiam optio rem ipsa corrupti consectetur quae labore nulla, eum rerum impedit dolor eius quibusdam doloribus. Voluptatem placeat culpa aspernatur?</p>
+<p><a href="{% url 'insert_myuser' %}">Insert</a></p>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    {% for myuser in myusers %}
+    <tr>
+        <td>{{ myuser.0 }}</td>
+        <td>{{ myuser.1 }}</td>
+        <td>
+            <a href="{% url 'update_myuser' myuser.0 %}">Update</a>
+            <a href="{% url 'delete_myuser' myuser.0 %}">Delete</a>
+            
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
