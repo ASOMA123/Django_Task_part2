@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Trainee
 # Create your views here.
@@ -14,9 +14,8 @@ def trainee_insert(request):
   if request.method == 'POST':
     name = request.POST['trname']
     email = request.POST['tremail']
-    #print("name is", name)
-   # print("email is", email)
-    Trainee.objects.create(name=name ,email=email)
+    image=request.FILES.get('trimage')
+    Trainee.objects.create(name=name ,email=email ,image=image)
     return HttpResponse("<h1>Inserted successfully</h1>")
   return render(request,'insert.html') 
 
@@ -24,4 +23,5 @@ def trainee_update(request,id):
   return HttpResponse(f"<h1>Update Trainee {id} Page</h1>") 
 
 def trainee_delete(request,id):
-  return HttpResponse(f"<h1>Delete Trainee {id} Page</h1>") 
+  Trainee.objects.filter(id=id).update(status=False)
+  return redirect('/trainee/')
